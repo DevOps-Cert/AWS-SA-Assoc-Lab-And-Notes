@@ -1,0 +1,18 @@
+#!/bin/bash
+sudo su
+yum update -y
+yum install httpd -y
+service httpd start
+chkconfig httpd on
+yum install gcc-c++ make
+yum install openssl-devel
+yum install git
+git clone git://github.com/nodejs/node.git
+cd node
+git checkout v0.6.8
+./configure
+make
+make install
+git clone https://github.com/isaacs/npm.git
+cd npm
+make install
